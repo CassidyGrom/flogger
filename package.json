@@ -8,7 +8,8 @@
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm run build",
+    "seed": "node server/seeds/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
