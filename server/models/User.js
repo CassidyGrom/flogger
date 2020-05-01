@@ -10,3 +10,7 @@ const UserSchema = new Schema (
       JournalSchema
     ]
   });
+
+  const User = model("User", UserSchema);
+
+module.exports = User;
