@@ -6,7 +6,6 @@ import React from 'react';
 const UserInfoContext = React.createContext({
   savedEntries: [],
   username: '',
-  email: '',
   journalCount: 0,
   getUserData: () => undefined,
 });
