@@ -8,7 +8,7 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cassidy Grom and Rachell",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
