@@ -3,7 +3,7 @@ const {
   createUser,
   getAllUsers,
   getSingleUser,
-  saveEntries,
+  savedEntries,
   deleteEntries,
   login,
 } = require('../../controllers/user-controller');
