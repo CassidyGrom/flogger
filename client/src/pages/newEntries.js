@@ -18,13 +18,13 @@ function NewEntry() {
     <>
       <Container>
         <Row>
-          <Col xs={12} md={6}>
+          <Col xs={6} md={6}>
             <h1>How are you feeling today?</h1>
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={6} md={6}>
             <h1>Current Entry</h1>
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={6} md={6}>
         <Form>
           {/* <Form onSubmit={handleFormSubmit}> */}
           {/* our html */}
@@ -75,7 +75,7 @@ function NewEntry() {
           </Row>
         </Form>
         </Col>
-        <Col xs={12} md={6}>
+        <Col xs={6} md={6}>
           <Container>
             <Card>
               <p>
