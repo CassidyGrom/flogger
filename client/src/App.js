@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NewEntry from './pages/NewEntry';
-import SavedEntries from './pages/SavedEntries';
+import NewEntry from './pages/NewEntries';
+// import SavedEntries from './pages/SavedEntries';
 import Navbar from './components/Navbar';
 
 import * as API from './utils/API';
@@ -45,7 +45,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/' component={NewEntry} />
-            <Route exact path='/saved' component={SavedEntries} />
+            {/* <Route exact path='/saved' component={SavedEntries} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </UserInfoContext.Provider>
