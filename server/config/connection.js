@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:flogger',
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/flogger',
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
