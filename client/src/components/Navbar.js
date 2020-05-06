@@ -26,7 +26,7 @@ function AppNavbar() {
               <Nav.Link as={Link} to='/'>
                 Home Page
               </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
+              {/* if user is logged in show saved entries and logout */}
               {username ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>

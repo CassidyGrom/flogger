@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NewEntry from './pages/NewEntries';
+import NewEntry from './pages/newEntries';
 // import SavedEntries from './pages/SavedEntries';
 import Navbar from './components/Navbar';
 
