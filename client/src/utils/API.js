@@ -30,3 +30,7 @@ export const savedEntries = function (journalData, token) {
 export const deleteEntries = function (journalId, token) {
   return axios.delete(`/api/users/journals/${journalId}`, { headers: { authorization: `Bearer ${token}` } });
 };
+
+export const getEmotionList = function (emotionData) {
+  return axios.get('/api/emotions');
+};
