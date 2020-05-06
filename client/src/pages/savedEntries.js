@@ -9,8 +9,29 @@ import {
   Row,
   CardColumns,
 } from "react-bootstrap";
+// import context for global state
+import UserInfoContext from '../utils/UserInfoContext';
+import * as API from '../utils/API';
+import AuthService from '../utils/auth';
 
 function SavedEntries() {
+
+    // get whole userData state object from App.js
+    const userData = useContext(UserInfoContext);
+
+    const handleDeleteEntry = (journalId) => {
+      // get token
+      const token = AuthService.loggedIn() ? AuthService.getToken() : null;
+  
+      if (!token) {
+        return false;
+      }
+      API.deleteEntries(journalId, token)
+        // upon succes, update user data to reflect book change
+        .then(() => userData.getUserData())
+        .catch((err) => console.log(err));
+    };
+
   return (
     <>
     <Container>
@@ -19,12 +40,23 @@ function SavedEntries() {
       </h1>
     </Container>
       <Container>
-        <Card>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </Card>
-        <Card>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </Card>
+      <CardColumns>
+          {userData.savedEntries.map((entry) => {
+            return (
+              <Card key={entry.journalId} border='dark'>
+                <Card.Body>
+                  <Card.Title>{entry.createdAt}</Card.Title>
+                  <Card.Text>{entry.journalText}
+                  <div><p>{entry.primaryEmotion} | {entry.secondaryEmotion}</p></div>
+                  </Card.Text>
+                  <Button className='btn-block btn-danger' onClick={() => handleDeleteEntry(entry.journalId)}>
+                    Delete this entry!
+                  </Button>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
       </Container>
     </>
     )
