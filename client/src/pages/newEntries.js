@@ -14,6 +14,7 @@ import UserInfoContext from "../utils/UserInfoContext";
 import AuthService from "../utils/auth";
 
 function NewEntry() {
+
   return (
     <>
       <Container>
