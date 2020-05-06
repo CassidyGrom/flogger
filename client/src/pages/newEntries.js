@@ -14,11 +14,6 @@ import UserInfoContext from "../utils/UserInfoContext";
 import AuthService from "../utils/auth";
 
 function NewEntry() {
-  //create state for returning previously logged data
-  const [loggedData, setLoggedData]= useState([]);
-
-  //get saved data from backend on load
-  const {}
 
   return (
     <>
