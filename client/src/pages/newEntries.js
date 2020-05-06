@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Form,
   Card,
@@ -9,11 +9,38 @@ import {
   Row,
   CardColumns,
 } from "react-bootstrap";
-import { SavedEntries, deleteEntries } from "../utils/API";
+import { SavedEntries, deleteEntries, getEmotionList } from "../utils/API";
 import UserInfoContext from "../utils/UserInfoContext";
 import AuthService from "../utils/auth";
 
 function NewEntry() {
+
+    // set up state to hold emotions retrieved from server
+    const [emotionList, setEmotionList] = useState([]);
+    // set up place to set secondary emotion list when we select a primary emotion
+    const [secondaryEmotionOptions, setSecondaryEmotionOptions] = useState([]);
+    const [pickedPrimaryEmotion, setPrimaryEmotion] = useState("");
+    const [pickedSecondaryEmotion, setSecondaryEmotion] = useState("");
+
+      // get emotion list from server
+  useEffect(() => {
+    console.log("helloooo");
+      getEmotionList()
+        .then(({data}) => {
+          console.log(data);
+          setEmotionList(data)})
+        .catch(err => console.log(err))
+  }, []);
+
+  const handleSelectPrimaryEmotion = e => {
+    const secondaryEmotions = emotionList.find(
+      ({ primaryEmotion }) => primaryEmotion === e.target.value
+    ).secondaryEmotion;
+
+    console.log(secondaryEmotions);
+    setPrimaryEmotion(e.target.value);
+    setSecondaryEmotionOptions(secondaryEmotions);
+  };
 
   return (
     <>
@@ -44,6 +71,41 @@ function NewEntry() {
             </Form.Group>
           </Form.Row>
           <Form.Row>
+        {/* set area for picking primary emotion */}
+        <select name="primary-emotion" onChange={handleSelectPrimaryEmotion}>
+          <option selected disabled>
+            Pick a primary emotion
+          </option>
+          {emotionList.map(({ primaryEmotion }) => {
+            return (
+              <option key={primaryEmotion} value={primaryEmotion}>
+                {primaryEmotion}
+              </option>
+            );
+          })}
+        </select>
+        </Form.Row>
+        {/* set area for picking secondary emotion */}
+        <Form.Row>
+        <select
+          name="secondary-emotion"
+          onChange={event => setSecondaryEmotion(event.target.value)}
+        >
+          {/* if we haven't selected a primary emotion yet, show a different option*/}
+          {secondaryEmotionOptions.length ? (
+            secondaryEmotionOptions.map(emotion => (
+              <option key={emotion} value={emotion}>
+                {emotion}
+              </option>
+            ))
+          ) : (
+            <option selected disabled>
+              Pick a primary emotion first
+            </option>
+          )}
+        </select>
+        </Form.Row>
+          {/* <Form.Row>
             <Form.Group controlId="Form.PrimaryEmotion">
               <Form.Label>Primary Emotion</Form.Label>
               <Form.Control as="select">
@@ -66,7 +128,7 @@ function NewEntry() {
                 <option>5</option>
               </Form.Control>
             </Form.Group>
-          </Form.Row>
+          </Form.Row> */}
           <Row>
             <Col xs={12} md={4}>
               <Button type="submit" variant="success">

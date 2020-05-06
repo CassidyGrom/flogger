@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const EmotionSchema = new Schema(
   {
     primaryEmotion: {type: String},
-    secondaryEmotion: [String]
+    secondaryEmotion: []
   }
 );
 
