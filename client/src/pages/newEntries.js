@@ -43,6 +43,7 @@ function NewEntry() {
               />
             </Form.Group>
           </Form.Row>
+          {/* FOCUS ON THIS */}
           <Form.Row>
             <Form.Group controlId="Form.PrimaryEmotion">
               <Form.Label>Primary Emotion</Form.Label>
