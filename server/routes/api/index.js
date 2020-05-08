@@ -15,6 +15,9 @@ router.get('/emotions', (req, res) => {
     console.log(err);
     res.json(err);
   })
-})
+}),
+
+
+router.post("")
 
 module.exports = router;
