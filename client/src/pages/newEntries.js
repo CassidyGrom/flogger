@@ -9,7 +9,7 @@ import {
   Row,
   CardColumns,
 } from "react-bootstrap";
-import { SavedEntries, deleteEntries, getEmotionList } from "../utils/API";
+import { saveEntries, deleteEntries, getEmotionList } from "../utils/API";
 import UserInfoContext from "../utils/UserInfoContext";
 import AuthService from "../utils/auth";
 
@@ -20,6 +20,9 @@ function NewEntry() {
   const [secondaryEmotionOptions, setSecondaryEmotionOptions] = useState([]);
   const [pickedPrimaryEmotion, setPrimaryEmotion] = useState("");
   const [pickedSecondaryEmotion, setSecondaryEmotion] = useState("");
+  const [entryInput, setEntryInput] = useState("");
+
+  const userData = useContext(UserInfoContext);
 
   // get emotion list from server
   useEffect(() => {
@@ -31,6 +34,26 @@ function NewEntry() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const entryData = {
+      primaryEmotion: pickedPrimaryEmotion,
+      secondaryEmotion: pickedSecondaryEmotion,
+      journalText: entryInput,
+    };
+
+    // get token
+    const token = AuthService.loggedIn() ? AuthService.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    saveEntries(entryData, token)
+      .then(() => userData.getUserData())
+      .catch((err) => console.log(err));
+  };
 
   const handleSelectPrimaryEmotion = (e) => {
     const secondaryEmotions = emotionList.find(
@@ -53,9 +76,7 @@ function NewEntry() {
             <h1>Current Entry</h1>
           </Col>
           <Col xs={6} md={6}>
-            <Form>
-              {/* <Form onSubmit={handleFormSubmit}> */}
-              {/* our html */}
+            <Form onSubmit={handleFormSubmit}>
               <Form.Row>
                 <Form.Group
                   // xs={12}
@@ -66,8 +87,8 @@ function NewEntry() {
                   <Form.Label>Talk about your day here:</Form.Label>
                   <Form.Control
                     name="entryInput"
-                    // value={entryInput}
-                    // onChange={(e) => setEntryInput(e.target.value)}
+                    value={entryInput}
+                    onChange={(e) => setEntryInput(e.target.value)}
                     type="text"
                     placeholder="journal feelings here"
                     as="textarea"
@@ -123,7 +144,6 @@ function NewEntry() {
                   </Form.Control>
                 </Form.Group>
               </Form.Row>
-
               <Row>
                 <Col xs={12} md={12} className="text-right">
                   <Button type="submit" variant="success">

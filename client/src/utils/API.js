@@ -23,13 +23,14 @@ export const loginUser = function (userData) {
 };
 
 // save journal entry for a logged in user
-export const savedEntries = function (journalData, token) {
+export const saveEntries = function (journalData, token) {
   return axios.put('/api/users', journalData, { headers: { authorization: `Bearer ${token}` } });
 };
 // remove saved journal entry for a logged in user
 export const deleteEntries = function (journalId, token) {
   return axios.delete(`/api/users/journals/${journalId}`, { headers: { authorization: `Bearer ${token}` } });
 };
+
 
 export const getEmotionList = function (emotionData) {
   return axios.get('/api/emotions');
