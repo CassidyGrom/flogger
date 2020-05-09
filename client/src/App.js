@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NewEntry from './pages/newEntries';
 import SavedEntries from './pages/savedEntries.js';
 import Navbar from './components/Navbar';
-
+import './index.css';
 import * as API from './utils/API';
 import AuthService from './utils/auth';
 

@@ -95,26 +95,23 @@ function NewEntry() {
     <>
       <Container>
         <Row>
-          <Col xs={6} md={6}>
-            <h1>How are you feeling today?</h1>
+          <Col xs={12} md={12} className="mt-4">
+            <h1 className="text-center">How are you feeling today?</h1>
           </Col>
-          <Col xs={6} md={6}>
-            <h1>Current Entry</h1>
-          </Col>
-          <Col xs={6} md={6}>
+          <Col xs={12} md={12}>
             <Form onSubmit={handleFormSubmit}>
               <Form.Row>
                 <Form.Group
                   className="col-12"
                   controlId="exampleForm.ControlTextarea1"
                 >
-                  <Form.Label>Talk about your day here:</Form.Label>
+                  <Form.Label className="green mt-3">Talk about your day here:</Form.Label>
                   <Form.Control
                     name="entryInput"
                     value={entryInput}
                     onChange={(e) => setEntryInput(e.target.value)}
                     type="text"
-                    placeholder="journal feelings here"
+                    placeholder="Journal your feelings here"
                     as="textarea"
                     rows="5"
                   />
@@ -122,11 +119,10 @@ function NewEntry() {
                     {entryInput.length}/{maxCount}
                   </p>
                 </Form.Group>
-                {charFlag && <h3>Too many characters</h3>}
               </Form.Row>
               <Form.Row>
                 <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
-                  <Form.Label className="mr-3">Primary emotion:</Form.Label>
+                  <Form.Label className="mr-3 green">Primary emotion:</Form.Label>
                   <Form.Control
                     as="select"
                     name="primary-emotion"
@@ -154,7 +150,7 @@ function NewEntry() {
                     controlId="Form.PrimaryEmotion"
                     className="col-12"
                   >
-                    <Form.Label className="mr-3">Secondary emotion:</Form.Label>
+                    <Form.Label className="mr-3 green">Secondary emotion:</Form.Label>
                     <Form.Control
                       as="select"
                       name="secondary-emotion"
@@ -183,7 +179,7 @@ function NewEntry() {
                   <Button
                     disabled={isButtonDisabled()}
                     type="submit"
-                    variant="success"
+                    className="submitbtn"
                   >
                     Submit Search
                   </Button>
