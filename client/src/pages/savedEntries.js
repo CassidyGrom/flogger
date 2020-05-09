@@ -26,7 +26,7 @@ function SavedEntries() {
       return false;
     }
     API.deleteEntries(journalId, token)
-      // upon succes, update user data to reflect book change
+      // upon success, update user data to reflect a journal entry change
       .then(() => userData.getUserData())
       .catch((err) => console.log(err));
   };
@@ -40,7 +40,7 @@ function SavedEntries() {
         <CardColumns>
           {userData.journals?.map((entry) => {
             return (
-              <Card key={entry.journalId} border="dark">
+              <Card key={entry._id} border="dark">
                 <Card.Body>
                   <Card.Title>{entry.createdAt}</Card.Title>
                   <Card.Text>
@@ -53,7 +53,7 @@ function SavedEntries() {
                   </Card.Text>
                   <Button
                     className="btn-block btn-danger"
-                    onClick={() => handleDeleteEntry(entry.journalId)}
+                    onClick={() => handleDeleteEntry(entry._id)}
                   >
                     Delete this entry!
                   </Button>
