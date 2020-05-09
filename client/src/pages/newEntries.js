@@ -21,8 +21,11 @@ function NewEntry() {
   const [pickedPrimaryEmotion, setPrimaryEmotion] = useState("");
   const [pickedSecondaryEmotion, setSecondaryEmotion] = useState("");
   const [entryInput, setEntryInput] = useState("");
+  const [charFlag, setCharFlag] = useState(false)
 
   const userData = useContext(UserInfoContext);
+
+  const maxCount = 250
 
   // get emotion list from server
   useEffect(() => {
@@ -34,6 +37,16 @@ function NewEntry() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    if (entryInput.length > maxCount) {
+      console.log('too many')
+      setCharFlag(true)
+    } else {
+      console.log(`characters ${entryInput.length}`)
+      setCharFlag(false)
+    }
+  }, [entryInput])
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +64,12 @@ function NewEntry() {
     }
 
     saveEntries(entryData, token)
-      .then(() => userData.getUserData())
+      .then(() => {
+        userData.getUserData();
+        setEntryInput("");
+        setPrimaryEmotion("");
+        setSecondaryEmotion("");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -64,6 +82,14 @@ function NewEntry() {
     setPrimaryEmotion(e.target.value);
     setSecondaryEmotionOptions(secondaryEmotions);
   };
+
+  const isButtonDisabled = () => {
+    if (charFlag || !entryInput || !pickedPrimaryEmotion) {
+      return true
+    }
+
+    return false
+  }
 
   return (
     <>
@@ -92,7 +118,11 @@ function NewEntry() {
                     as="textarea"
                     rows="5"
                   />
+                  <p>
+                    {entryInput.length}/{maxCount}
+                  </p>
                 </Form.Group>
+                {charFlag && <h3>Too many characters</h3>}
               </Form.Row>
               <Form.Row>
                 <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
@@ -102,9 +132,11 @@ function NewEntry() {
                     name="primary-emotion"
                     onChange={handleSelectPrimaryEmotion}
                   >
-                    <option selected disabled>
-                      Pick a primary emotion
-                    </option>
+                    {!pickedPrimaryEmotion && (
+                      <option selected disabled>
+                        Pick a primary emotion
+                      </option>
+                    )}
                     {emotionList.map(({ primaryEmotion }) => {
                       return (
                         <option key={primaryEmotion} value={primaryEmotion}>
@@ -117,56 +149,47 @@ function NewEntry() {
               </Form.Row>
               {/* set area for picking secondary emotion */}
               <Form.Row>
-                <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
-                  <Form.Label className="mr-3">Secondary emotion:</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="secondary-emotion"
-                    onChange={(event) =>
-                      setSecondaryEmotion(event.target.value)
-                    }
+                {pickedPrimaryEmotion && (
+                  <Form.Group
+                    controlId="Form.PrimaryEmotion"
+                    className="col-12"
                   >
-                    {/* if we haven't selected a primary emotion yet, show a different option*/}
-                    {secondaryEmotionOptions.length ? (
-                      secondaryEmotionOptions.map((emotion) => (
-                        <option key={emotion} value={emotion}>
-                          {emotion}
+                    <Form.Label className="mr-3">Secondary emotion:</Form.Label>
+                    <Form.Control
+                      as="select"
+                      name="secondary-emotion"
+                      onChange={(event) =>
+                        setSecondaryEmotion(event.target.value)
+                      }
+                    >
+                      {(!pickedPrimaryEmotion || !pickedSecondaryEmotion) && (
+                        <option selected disabled>
+                          How did that make you feel specifically?
                         </option>
-                      ))
-                    ) : (
-                      <option selected disabled>
-                        Pick a primary emotion first
-                      </option>
-                    )}
-                  </Form.Control>
-                </Form.Group>
+                      )}
+                      {/* if we haven't selected a primary emotion yet, show a different option*/}
+                      {secondaryEmotionOptions.length &&
+                        secondaryEmotionOptions.map((emotion) => (
+                          <option key={emotion} value={emotion}>
+                            {emotion}
+                          </option>
+                        ))}
+                    </Form.Control>
+                  </Form.Group>
+                )}
               </Form.Row>
               <Row>
                 <Col xs={12} md={12} className="text-right">
-                  <Button type="submit" variant="success">
+                  <Button
+                    disabled={isButtonDisabled()}
+                    type="submit"
+                    variant="success"
+                  >
                     Submit Search
                   </Button>
                 </Col>
               </Row>
             </Form>
-          </Col>
-          <Col xs={6} md={6}>
-            <Container>
-              <Card>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-              </Card>
-            </Container>
           </Col>
         </Row>
       </Container>
