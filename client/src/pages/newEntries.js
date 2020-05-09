@@ -79,8 +79,6 @@ function NewEntry() {
             <Form onSubmit={handleFormSubmit}>
               <Form.Row>
                 <Form.Group
-                  // xs={12}
-                  // md={12}
                   className="col-12"
                   controlId="exampleForm.ControlTextarea1"
                 >
@@ -96,7 +94,6 @@ function NewEntry() {
                   />
                 </Form.Group>
               </Form.Row>
-              {/* FOCUS ON THIS */}
               <Form.Row>
                 <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
                   <Form.Label className="mr-3">Primary emotion:</Form.Label>
