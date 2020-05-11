@@ -14,9 +14,10 @@ function AppNavbar() {
 
   return (
     <>
+            
       <Navbar className="color-nav shadow p-3" expand='lg'>
-        <Container fluid>
-          <Navbar.Brand className="color-nav" as={Link} to='/'>
+      <Container fluid>
+          <Navbar.Brand className="color-nav brand-nav" as={Link} to='/'>
             Feelings Journal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
@@ -38,7 +39,7 @@ function AppNavbar() {
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
+          </Container>
       </Navbar>
       {/* set modal data up */}
       <Modal size='lg' show={showModal} onHide={() => setShowModal(false)} aria-labelledby='signup-modal'>

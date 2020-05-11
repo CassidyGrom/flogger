@@ -3,6 +3,14 @@
   color: #0A4D35 !important;
 }
 
+.brand-nav {
+  font-size: 1.25rem!important;
+}
+.brand-nav:hover {
+  margin-left: -8px!important;
+  margin-bottom: -5px!important;
+  margin-top: -5px!important;
+}
 h1, p, option {
   color:#0A4D35;
 }

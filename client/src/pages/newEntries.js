@@ -29,7 +29,6 @@ function NewEntry() {
 
   // get emotion list from server
   useEffect(() => {
-    console.log("helloooo");
     getEmotionList()
       .then(({ data }) => {
         console.log(data);
