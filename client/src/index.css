@@ -46,3 +46,7 @@ body {
   background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
 }
+
+.route-wrapper {
+  position: relative;
+}
