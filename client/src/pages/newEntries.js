@@ -93,7 +93,7 @@ function NewEntry() {
 
   return (
     <>
-      <Container>
+      <Container className="border border-secondary mt-5 p-3 rounded bg-white">
         <Row>
           <Col xs={12} md={12} className="mt-4">
             <h1 className="text-center">How are you feeling today?</h1>
@@ -111,7 +111,7 @@ function NewEntry() {
                     value={entryInput}
                     onChange={(e) => setEntryInput(e.target.value)}
                     type="text"
-                    placeholder="Journal your feelings here"
+                    placeholder="Journal your feelings here (Max characters 250)"
                     as="textarea"
                     rows="5"
                   />
@@ -181,7 +181,7 @@ function NewEntry() {
                     type="submit"
                     className="submitbtn"
                   >
-                    Submit Search
+                    Save your entry
                   </Button>
                 </Col>
               </Row>

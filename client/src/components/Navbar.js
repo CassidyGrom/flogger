@@ -14,7 +14,7 @@ function AppNavbar() {
 
   return (
     <>
-      <Navbar className="color-nav" expand='lg'>
+      <Navbar className="color-nav shadow p-3" expand='lg'>
         <Container fluid>
           <Navbar.Brand className="color-nav" as={Link} to='/'>
             Feelings Journal

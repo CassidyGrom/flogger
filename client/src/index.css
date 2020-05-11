@@ -1,5 +1,5 @@
 .color-nav {
-  background-color: #b9e5d9;
+  background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
 }
 
@@ -21,4 +21,28 @@ h1, p, option {
 .submitbtn:hover {
   background-color: #0A4D35 !important;
   color: #b9e5d9 !important;
+}
+
+a:hover, a:active {
+  background-color: #0A4D35 !important;
+  color: #b9e5d9 !important;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+body {
+  background-image: url(./assets/teal-white-and-pink-paint-1561020.jpg);
+}
+
+.remove {
+  display: inline;
+  float: right;
+  background-color: #0A4D35 !important;
+  color: #b9e5d9 !important;
+  border-color: #0A4D35 !important;
+}
+
+.remove:hover {
+  background-color: #b9e5d9 !important;
+  color: #0A4D35 !important;
 }
