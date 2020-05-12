@@ -45,14 +45,14 @@ body {
 .remove {
   display: inline;
   float: right;
-  background-color: #0A4D35 !important;
-  color: #b9e5d9 !important;
+  background-color: #b9e5d9 !important;
+  color: #0A4D35 !important;
   border-color: #0A4D35 !important;
 }
 
 .remove:hover {
-  background-color: #b9e5d9 !important;
-  color: #0A4D35 !important;
+  background-color: #0A4D35 !important;
+  color: #b9e5d9 !important;
 }
 
 .route-wrapper {
