@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-
 import UserInfoContext from '../utils/UserInfoContext';
 import AuthService from '../utils/auth';
 
@@ -15,31 +14,32 @@ function AppNavbar() {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
-        <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
+            
+      <Navbar className="color-nav shadow p-3" expand='lg'>
+      <Container fluid>
+          <Navbar.Brand className="color-nav brand-nav" as={Link} to='/'>
             Feelings Journal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
-              <Nav.Link as={Link} to='/'>
+              <Nav.Link className="color-nav" as={Link} to='/'>
                 Home Page
               </Nav.Link>
               {/* if user is logged in show saved entries and logout */}
               {username ? (
                 <>
-                  <Nav.Link as={Link} to='/saved'>
+                  <Nav.Link className="color-nav" as={Link} to='/saved'>
                     See {username}'s Entries
                   </Nav.Link>
-                  <Nav.Link onClick={AuthService.logout}>Logout</Nav.Link>
+                  <Nav.Link className="color-nav" onClick={AuthService.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link className="color-nav" onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
+          </Container>
       </Navbar>
       {/* set modal data up */}
       <Modal size='lg' show={showModal} onHide={() => setShowModal(false)} aria-labelledby='signup-modal'>

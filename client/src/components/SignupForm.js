@@ -98,8 +98,7 @@ function SignupForm({ handleModalClose }) {
         </Form.Group>
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
+          type='submit' className="submitbtn">
           Submit
         </Button>
       </Form>
