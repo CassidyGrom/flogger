@@ -42,12 +42,10 @@ function SavedEntries() {
             return (
               <Card key={entry._id} border="secondary">
                 <Card.Body>
-                  <Button
+                <Button
                     className="remove"
                     onClick={() => handleDeleteEntry(entry._id)}
-                  >
-                    {" "}
-                    X
+                  > X
                   </Button>
                   <Card.Title>{entry.createdAt}</Card.Title>
                   <Card.Text>
