@@ -34,24 +34,29 @@ function SavedEntries() {
   return (
     <>
       <Container>
-        <h1 className="m-5">Past journal entries</h1>
+        <h1 className="mt-4 mb-4 text-center">Past journal entries</h1>
       </Container>
       <Container>
         <CardColumns>
           {userData.journals?.map((entry) => {
             return (
-              <Card key={entry._id} border="secondary">
+              <Card key={entry._id}>
                 <Card.Body>
-                <Button
-                    className="remove"
-                    onClick={() => handleDeleteEntry(entry._id)}
-                  > X
-                  </Button>
-                  <Card.Title>{entry.createdAt}</Card.Title>
-                  <Card.Text>
+                  <div className="mb-4">
+                    <Button
+                      className="remove"
+                      onClick={() => handleDeleteEntry(entry._id)}
+                    >
+                      X
+                    </Button>
+                  </div>
+                  <Card.Title className="form-label pl-2 pr-2 text-center">
+                    {entry.createdAt}
+                  </Card.Title>
+                  <Card.Text className="ml-3">
                     {entry.journalText}
                     <div>
-                      <p>
+                      <p class="labels mt-4">
                         {entry.primaryEmotion} | {entry.secondaryEmotion}
                       </p>
                     </div>

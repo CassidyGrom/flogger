@@ -38,6 +38,13 @@ h1 {
   font-size: 1.75em !important;
 }
 
+.card-title {
+  font-family: "ff-cocon-pro-condensed",
+    sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 .green {
   color: #0A4D35
 }
@@ -75,6 +82,8 @@ body {
   background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
   border-color: #0A4D35 !important;
+  font-size: .5rem !important;
+  padding: .2rem .4rem !important;
 }
 
 .remove:hover {
@@ -92,6 +101,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 1.2em;
+  color: #0A4D35;
 }
 
 .ticker {
@@ -102,13 +112,6 @@ body {
   font-style: normal;
 }
 
-.labels {
-  font-family: "ff-cocon-pro-condensed",
-    sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1.2em;
-}
 
 .card-body {
   background-color: #f5ece5;
@@ -117,4 +120,13 @@ body {
 
 .card {
   border: 2px solid #fac6dc !important;
+}
+
+
+
+.labels {
+  font-family: "ff-cocon-pro-condensed";
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.2em;
 }

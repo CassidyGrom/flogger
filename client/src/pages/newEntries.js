@@ -92,11 +92,9 @@ function NewEntry() {
 
   return (
     <>
+      <h1 className="text-center mt-5">How are you feeling today?</h1>
       <Container className="border border-secondary mt-5 p-3 rounded bg-white">
         <Row>
-          <Col xs={12} md={12} className="mt-4">
-            <h1 className="text-center">How are you feeling today?</h1>
-          </Col>
           <Col xs={12} md={12}>
             <Form onSubmit={handleFormSubmit}>
               <Form.Row>
@@ -104,7 +102,9 @@ function NewEntry() {
                   className="col-12"
                   controlId="exampleForm.ControlTextarea1"
                 >
-                  <Form.Label className="green mt-3">Talk about your day here:</Form.Label>
+                  <Form.Label className="green mt-3">
+                    Talk about your day here:
+                  </Form.Label>
                   <Form.Control
                     name="entryInput"
                     value={entryInput}
@@ -121,7 +121,9 @@ function NewEntry() {
               </Form.Row>
               <Form.Row>
                 <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
-                  <Form.Label className="mr-3 green">Primary emotion:</Form.Label>
+                  <Form.Label className="mr-3 green">
+                    Primary emotion:
+                  </Form.Label>
                   <Form.Control
                     as="select"
                     name="primary-emotion"
@@ -149,7 +151,9 @@ function NewEntry() {
                     controlId="Form.PrimaryEmotion"
                     className="col-12"
                   >
-                    <Form.Label className="mr-3 green">Secondary emotion:</Form.Label>
+                    <Form.Label className="mr-3 green">
+                      Secondary emotion:
+                    </Form.Label>
                     <Form.Control
                       as="select"
                       name="secondary-emotion"
