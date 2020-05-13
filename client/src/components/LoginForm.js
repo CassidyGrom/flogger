@@ -74,7 +74,7 @@ function LoginForm({ handleModalClose }) {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-        <Button disabled={!(userFormData.username && userFormData.password)} type='submit' variant='success'>
+        <Button disabled={!(userFormData.username && userFormData.password)} type='submit' className="submitbtn">
           Submit
         </Button>
       </Form>

@@ -34,14 +34,21 @@ function SavedEntries() {
   return (
     <>
       <Container>
-        <h1>Past journal entries</h1>
+        <h1 className="m-5">Past journal entries</h1>
       </Container>
       <Container>
         <CardColumns>
           {userData.journals?.map((entry) => {
             return (
-              <Card key={entry._id} border="dark">
+              <Card key={entry._id} border="secondary">
                 <Card.Body>
+                  <Button
+                    className="remove"
+                    onClick={() => handleDeleteEntry(entry._id)}
+                  >
+                    {" "}
+                    X
+                  </Button>
                   <Card.Title>{entry.createdAt}</Card.Title>
                   <Card.Text>
                     {entry.journalText}
@@ -51,12 +58,6 @@ function SavedEntries() {
                       </p>
                     </div>
                   </Card.Text>
-                  <Button
-                    className="btn-block btn-danger"
-                    onClick={() => handleDeleteEntry(entry._id)}
-                  >
-                    Delete this entry!
-                  </Button>
                 </Card.Body>
               </Card>
             );
@@ -66,5 +67,4 @@ function SavedEntries() {
     </>
   );
 }
-
 export default SavedEntries;

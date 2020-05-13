@@ -21,15 +21,14 @@ function NewEntry() {
   const [pickedPrimaryEmotion, setPrimaryEmotion] = useState("");
   const [pickedSecondaryEmotion, setSecondaryEmotion] = useState("");
   const [entryInput, setEntryInput] = useState("");
-  const [charFlag, setCharFlag] = useState(false)
+  const [charFlag, setCharFlag] = useState(false);
 
   const userData = useContext(UserInfoContext);
 
-  const maxCount = 250
+  const maxCount = 250;
 
   // get emotion list from server
   useEffect(() => {
-    console.log("helloooo");
     getEmotionList()
       .then(({ data }) => {
         console.log(data);
@@ -40,13 +39,13 @@ function NewEntry() {
 
   useEffect(() => {
     if (entryInput.length > maxCount) {
-      console.log('too many')
-      setCharFlag(true)
+      console.log("too many");
+      setCharFlag(true);
     } else {
-      console.log(`characters ${entryInput.length}`)
-      setCharFlag(false)
+      console.log(`characters ${entryInput.length}`);
+      setCharFlag(false);
     }
-  }, [entryInput])
+  }, [entryInput]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -85,48 +84,47 @@ function NewEntry() {
 
   const isButtonDisabled = () => {
     if (charFlag || !entryInput || !pickedPrimaryEmotion) {
-      return true
+      return true;
     }
 
-    return false
-  }
+    return false;
+  };
 
   return (
     <>
-      <Container>
+      <h1 className="text-center mt-5">How are you feeling today?</h1>
+      <Container className="border border-secondary mt-5 p-3 rounded bg-white">
         <Row>
-          <Col xs={6} md={6}>
-            <h1>How are you feeling today?</h1>
-          </Col>
-          <Col xs={6} md={6}>
-            <h1>Current Entry</h1>
-          </Col>
-          <Col xs={6} md={6}>
+          <Col xs={12} md={12} className="mt-4"></Col>
+          <Col xs={12} md={12}>
             <Form onSubmit={handleFormSubmit}>
               <Form.Row>
                 <Form.Group
                   className="col-12"
                   controlId="exampleForm.ControlTextarea1"
                 >
-                  <Form.Label>Talk about your day here:</Form.Label>
+                  <Form.Label className="green mt-3">
+                    Talk about your day here:
+                  </Form.Label>
                   <Form.Control
                     name="entryInput"
                     value={entryInput}
                     onChange={(e) => setEntryInput(e.target.value)}
                     type="text"
-                    placeholder="journal feelings here"
+                    placeholder="Journal your feelings here (Max characters 250)"
                     as="textarea"
                     rows="5"
                   />
-                  <p>
+                  <p class="ticker">
                     {entryInput.length}/{maxCount}
                   </p>
                 </Form.Group>
-                {charFlag && <h3>Too many characters</h3>}
               </Form.Row>
               <Form.Row>
                 <Form.Group controlId="Form.PrimaryEmotion" className="col-12">
-                  <Form.Label className="mr-3">Primary emotion:</Form.Label>
+                  <Form.Label className="mr-3 green">
+                    Primary emotion:
+                  </Form.Label>
                   <Form.Control
                     as="select"
                     name="primary-emotion"
@@ -154,7 +152,9 @@ function NewEntry() {
                     controlId="Form.PrimaryEmotion"
                     className="col-12"
                   >
-                    <Form.Label className="mr-3">Secondary emotion:</Form.Label>
+                    <Form.Label className="mr-3 green">
+                      Secondary emotion:
+                    </Form.Label>
                     <Form.Control
                       as="select"
                       name="secondary-emotion"
@@ -183,9 +183,9 @@ function NewEntry() {
                   <Button
                     disabled={isButtonDisabled()}
                     type="submit"
-                    variant="success"
+                    className="submitbtn"
                   >
-                    Submit Search
+                    Save your entry
                   </Button>
                 </Col>
               </Row>
