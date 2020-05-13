@@ -16,12 +16,7 @@
   font-family: "ff-cocon-pro", sans-serif;
   font-weight: 700;
   font-style: italic;
-}
-
-.brand-nav:hover {
-  margin-left: -10px !important;
-  margin-bottom: -8px !important;
-  margin-top: -8px !important;
+  padding: 8px;
 }
 
 h1,
@@ -69,7 +64,6 @@ a:active {
   background-color: #0A4D35 !important;
   color: #b9e5d9 !important;
   border-radius: 4px;
-  padding: 8px;
 }
 
 body {
