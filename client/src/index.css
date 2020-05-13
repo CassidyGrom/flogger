@@ -1,29 +1,62 @@
 .color-nav {
   background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
+  font-family: "ff-cocon-pro", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1em;
+}
+
+.nav-link {
+  margin-left: .8em;
 }
 
 .brand-nav {
-  font-size: 1.25rem!important;
+  font-size: 1.75rem !important;
+  font-family: "ff-cocon-pro", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }
+
 .brand-nav:hover {
-  margin-left: -8px!important;
-  margin-bottom: -5px!important;
-  margin-top: -5px!important;
+  margin-left: -10px !important;
+  margin-bottom: -8px !important;
+  margin-top: -8px !important;
 }
-h1, p, option {
-  color:#0A4D35;
+
+h1,
+p,
+option {
+  color: #0A4D35;
+}
+
+h1 {
+  font-family: ff-cocon-pro,
+    sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.75em !important;
+}
+
+.card-title {
+  font-family: "ff-cocon-pro-condensed",
+    sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .green {
-  color:#0A4D35
+  color: #0A4D35
 }
 
 .submitbtn {
   background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
-  border-color:#0A4D35 !important;
-
+  border-color: #0A4D35 !important;
+  font-family: "ff-cocon-pro",
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .submitbtn:hover {
@@ -31,7 +64,8 @@ h1, p, option {
   color: #b9e5d9 !important;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
   background-color: #0A4D35 !important;
   color: #b9e5d9 !important;
   border-radius: 4px;
@@ -48,6 +82,8 @@ body {
   background-color: #b9e5d9 !important;
   color: #0A4D35 !important;
   border-color: #0A4D35 !important;
+  font-size: .5rem !important;
+  padding: .2rem .4rem !important;
 }
 
 .remove:hover {
@@ -57,4 +93,40 @@ body {
 
 .route-wrapper {
   position: relative;
+}
+
+.form-label {
+  font-family: "ff-cocon-pro",
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2em;
+  color: #0A4D35;
+}
+
+.ticker {
+  text-align: right;
+  font-family: "ff-cocon-pro-condensed",
+    sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+.card-body {
+  background-color: #f5ece5;
+  border-color: #f5ece5;
+}
+
+.card {
+  border: 2px solid #fac6dc !important;
+}
+
+
+
+.labels {
+  font-family: "ff-cocon-pro-condensed";
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.2em;
 }
