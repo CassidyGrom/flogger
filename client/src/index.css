@@ -123,10 +123,23 @@ body {
 }
 
 
-
 .labels {
   font-family: "ff-cocon-pro-condensed";
   font-weight: 300;
   font-style: normal;
   font-size: 1.2em;
+}
+
+.signup {
+  margin-left: .8em;
+  background-color: #b9e5d9 !important;
+  color: #0A4D35 !important;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 2px;
+}
+
+.signup:hover {
+  background-color: #0A4D35 !important;
+  color: #b9e5d9 !important;
 }
