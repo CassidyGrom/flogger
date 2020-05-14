@@ -14,6 +14,7 @@ In our app, the Feelings Journal, we mimic this therapy process. We used a list 
 * axios
 * JSON web tokens
 * bcrypt
+* react-router-transition
 
 ## Deployed Link
 [Heroku](https://emotions-log.herokuapp.com/)
